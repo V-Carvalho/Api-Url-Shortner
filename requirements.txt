@@ -1,0 +1,3 @@
+aioflask==0.4.0
+cors==1.0.1
+gunicorn==20.1.0
