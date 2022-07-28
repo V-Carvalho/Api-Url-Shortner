@@ -3,7 +3,6 @@ runtime: python3
 build:
   commands:
     build:
-      - pip install aioflask
-      - pip install -U flask-cors
+      - pip install aioflask 
 run: 
   command: python main.py

@@ -1,10 +1,8 @@
 import random
 from dao import DAO
-from flask_cors import CORS
 from aioflask import Flask, request, redirect
 
 app = Flask(__name__)
-CORS(app)
 db = DAO()
 db.create_database()
 
@@ -44,4 +42,4 @@ def validate_shortened_url(code_url):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    app.run(debug=True, host="0.0.0.0",port=8080)
