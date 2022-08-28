@@ -1,4 +1,6 @@
+import os
 import random
+import dotenv
 from dao import DAO
 from flask_cors import CORS
 from aioflask import Flask, request, redirect
@@ -8,6 +10,7 @@ CORS(app)
 db = DAO()
 db.create_database()
 
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 @app.route('/')
 def home():
@@ -18,7 +21,7 @@ def home():
 def create_shortened_url():
     original_url = request.json["url"]
     generated_code = code_generator_for_url()
-    new_url = 'https://uvvszaca6s.us-west-2.awsapprunner.com/' + generated_code
+    new_url = os.getenv("API") + generated_code
 
     response = db.insert_data(original_url, new_url, generated_code)
     if response == 1:
